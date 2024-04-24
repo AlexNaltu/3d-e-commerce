@@ -17,6 +17,7 @@ interface FormProps {
   initialData: {
     name: string;
     description: string;
+    image: string;
   };
 }
 function PostForm({ formAction, initialData }: FormProps) {
@@ -29,6 +30,8 @@ function PostForm({ formAction, initialData }: FormProps) {
         {initialData.name ? "Update" : "Create"} Post
       </h1>
       <form action={action} className="flex flex-col max-w-sm mx-auto">
+        <label htmlFor="image">Image Link</label>
+        <input id="image" name="image" type="text" />
         <label htmlFor="name">Name</label>
         <input id="name" name="name" type="text" />
         {formState.errors.name && <div>{formState.errors.name.join(",")}</div>}

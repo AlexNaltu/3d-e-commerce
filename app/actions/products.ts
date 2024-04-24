@@ -10,6 +10,7 @@ import { prisma } from "@/lib/db/prisma";
 const productSchema = z.object({
   name: z.string().min(3).max(255),
   description: z.string().min(10).max(1000),
+  image: z.string().min(10).max(10000),
 });
 
 //create an interface for the PostFormState
@@ -32,6 +33,7 @@ export async function createProduct(
   const result = productSchema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),
+    image: formData.get("image"),
   });
 
   //if the result is not successful, return an error
@@ -48,6 +50,7 @@ export async function createProduct(
       data: {
         name: result.data.name,
         description: result.data.description,
+        image: result.data.image,
       },
     });
     //if the post is not created, return an error
@@ -86,6 +89,7 @@ export async function updateProduct(
   const result = productSchema.safeParse({
     title: formData.get("title"),
     content: formData.get("content"),
+    image: formData.get("image"),
   });
 
   //if the result is not successful, return an error
@@ -104,6 +108,7 @@ export async function updateProduct(
       data: {
         name: result.data.name,
         description: result.data.description,
+        image: result.data.image,
       },
     });
     //if the post is not created, return an error
