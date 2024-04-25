@@ -7,7 +7,7 @@ const PostProductPage = () => {
     <div className="bg-red-50">
       <PostForm
         formAction={createProduct}
-        initialData={{ name: "", description: "", image: "" }}
+        initialData={{ name: "", description: "", image: "", unit_amount: 0 }}
       />
     </div>
   );

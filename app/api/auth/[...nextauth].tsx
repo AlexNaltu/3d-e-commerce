@@ -14,6 +14,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET as string,
   events: {
     // This is a custom event handler that is triggered when a user signs in.
     createUser: async ({ user }) => {

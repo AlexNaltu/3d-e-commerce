@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 interface FormErrors {
   name?: string[];
   description?: string[];
+  unit_amount?: string[];
 }
 
 interface FormState {
@@ -18,6 +19,7 @@ interface FormProps {
     name: string;
     description: string;
     image: string;
+    unit_amount: number;
   };
 }
 function PostForm({ formAction, initialData }: FormProps) {
@@ -32,6 +34,11 @@ function PostForm({ formAction, initialData }: FormProps) {
       <form action={action} className="flex flex-col max-w-sm mx-auto">
         <label htmlFor="image">Image Link</label>
         <input id="image" name="image" type="text" />
+        <label htmlFor="unit_amount">Unit Amount</label>
+        <input id="unit_amount" name="unit_amount" type="number" />
+        {formState.errors.unit_amount && (
+          <div>{formState.errors.unit_amount.join(",")}</div>
+        )}
         <label htmlFor="name">Name</label>
         <input id="name" name="name" type="text" />
         {formState.errors.name && <div>{formState.errors.name.join(",")}</div>}
